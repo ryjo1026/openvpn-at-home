@@ -37,6 +37,7 @@ class Server(models.Model):
     tls_auth_key = models.CharField(max_length=8192)
     dhparams = models.ForeignKey(DhParams, on_delete=models.CASCADE)
     protocol = models.CharField(choices=PROTOCOL_CHOICES, default=PROTOCOL_UDP, max_length=10)
+    dummy = models.CharField(max_length=MAX_NAME_LENGTH, default='dummy')
 
     def __str__(self):
         return 'Server {name}, {hostname}, {owner}'.format(name=self.name, hostname=self.hostname, owner=self.email)
